@@ -21,8 +21,8 @@ jobs:
         with:
           unityVersion: 2022.3.25f1
           targetPlatform: Android
+          buildsPath: build
           buildName: ExoPioneer
-          buildPath: build/ExoPioneer
           androidExportType: AndroidAppBundle
           androidKeystoreName: userDebug
           androidKeystorePass: debugpass
