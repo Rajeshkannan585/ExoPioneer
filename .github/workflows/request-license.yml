@@ -1,17 +1,31 @@
-name: Unity License Request (Mobile)
+name: Build Android
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  requestLicense:
+  build:
+    name: Build Android AAB
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout project
         uses: actions/checkout@v4
-      - name: Request Unity Activation (.alf)
+
+      - name: Unity Builder
         uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           unityVersion: 2022.3.25f1
           targetPlatform: Android
-          customParameters: -createManualActivationFile
+          buildName: ExoPioneer
+          buildPath: build/ExoPioneer
+          androidExportType: AndroidAppBundle
+          androidKeystoreName: userDebug
+          androidKeystorePass: debugpass
+          androidKeyaliasName: debug
+          androidKeyaliasPass: debugpass
+          androidTargetSdkVersion: 33
