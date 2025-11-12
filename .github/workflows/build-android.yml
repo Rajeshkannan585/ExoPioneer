@@ -24,7 +24,8 @@ jobs:
           buildsPath: build
           buildName: ExoPioneer
           androidExportType: AndroidAppBundle
-          androidKeystoreName: userDebug
+          # if using base64 keystore:
+          androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           androidKeystorePass: debugpass
           androidKeyaliasName: debug
           androidKeyaliasPass: debugpass
